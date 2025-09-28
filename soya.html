@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nazifa Israt Soya - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #333f63;
+            --primary-blue: #715c8c;
+            --light-gray: #d7d4dd;
+            --accent-blue: #838bc2;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-dark);
+            background: linear-gradient(135deg, var(--light-gray) 0%, #f8f7fa 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+            color: white;
+            height: 80vh;
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid var(--light-gray);
+            margin: 0 auto 30px;
+            display: block;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header .degree {
+            font-size: 1rem;
+            opacity: 0.8;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navigation */
+        .nav {
+            background: var(--primary-dark);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav li {
+            margin: 0 20px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .nav a:hover {
+            background: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            scroll-margin-top: 80px;
+        }
+
+        .section h2 {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent-blue);
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-blue);
+        }
+
+        /* Contact Info */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: var(--light-gray);
+        }
+
+        .contact-item a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-blue);
+        }
+
+        .contact-item i {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: var(--accent-blue);
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Skills */
+        .skill-category {
+            margin-bottom: 25px;
+        }
+
+        .skill-category h3 {
+            color: var(--primary-dark);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: var(--accent-blue);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-purple);
+            transform: scale(1.05);
+        }
+
+        /* Languages */
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .language-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Main Content Area */
+        .content-area {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* About Section */
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--primary-dark);
+            text-align: justify;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent-blue);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            background: var(--light-gray);
+            padding: 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 25px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .timeline-date {
+            background: var(--primary-blue);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            display: inline-block;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .timeline-subtitle {
+            color: var(--accent-blue);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-description {
+            color: var(--primary-dark);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Experience List */
+        .experience-list {
+            list-style: none;
+        }
+
+        .experience-list li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .experience-list li i {
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-size: 0.8rem;
+            top: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .sidebar {
+                position: static;
+                margin-bottom: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header .subtitle {
+                font-size: 1rem;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav li {
+                margin: 5px 0;
+            }
+
+            .container {
+                padding: 10px;
+            }
+
+            .timeline {
+                padding-left: 20px;
+            }
+
+            .timeline::before {
+                left: 5px;
+            }
+
+            .timeline-item::before {
+                left: -15px;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .contact-item::before {
+                margin-bottom: 5px;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <img src="profile.jpg" alt="Nazifa Israt Soya" class="profile-img">
+            <h1 class="fade-in">NAZIFA ISRAT SOYA</h1>
+            <p class="subtitle fade-in">Final Year Undergraduate Student</p>
+            <p class="degree fade-in">BSc in CSE</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Contact Section -->
+                <section class="section" id="contact">
+                    <h2>Contact</h2>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+8801965560244">01965-560244</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:soyanazifa@gmail.com">soyanazifa@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>House-1373, Road-10, Ave-9<br>Mir Pur, DOHS, Mirpur, Dhaka-1216</span>
+                    </div>
+                </section>
+
+                <!-- Skills Section -->
+                <section class="section" id="skills">
+                    <h2>Skills</h2>
+                    
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">C</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Technical Skills</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">DLD & Semiconductor Basics</span>
+                            <span class="skill-tag">Micro-controllers</span>
+                            <span class="skill-tag">Embedded Systems</span>
+                            <span class="skill-tag">Office Suite</span>
+                            <span class="skill-tag">Communication</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Soft Skills</h3>
+                        <div class="skill-list">
+                            <span class="skill-tag">Teamwork</span>
+                            <span class="skill-tag">Leadership</span>
+                            <span class="skill-tag">Adaptability</span>
+                            <span class="skill-tag">Project Management</span>
+                            <span class="skill-tag">Fast Learning</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Languages Section -->
+                <section class="section">
+                    <h2>Languages</h2>
+                    <div class="language-item">
+                        <span>English</span>
+                        <span>Fluent</span>
+                    </div>
+                    <div class="language-item">
+                        <span>Bangla</span>
+                        <span>Native</span>
+                    </div>
+                </section>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="content-area">
+                <!-- About Section -->
+                <section class="section fade-in" id="about">
+                    <h2>About Me</h2>
+                    <p class="about-text">
+                        Looking for fast challenging job where I will continue to learn to satisfy my eagerness and skill to do something progressive and hope that I will be able to contribute to the company.
+                    </p>
+                    <p class="about-text">
+                        As a passionate frontend developer with strong knowledge in HTML and CSS, I enjoy creating engaging and user-friendly web experiences. My background in Computer Science Engineering provides me with a solid foundation in both technical skills and problem-solving abilities.
+                    </p>
+                </section>
+
+                <!-- Education Section -->
+                <section class="section fade-in" id="education">
+                    <h2>Education</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-date">2022 - Present</span>
+                            <div class="timeline-title">DAFFODIL INTERNATIONAL UNIVERSITY</div>
+                            <div class="timeline-subtitle">Bachelor of Science in CSE</div>
+                            <div class="timeline-description">Currently pursuing Bachelor's degree in Computer Science and Engineering with focus on software development and frontend technologies.</div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="timeline-date">2021</span>
+                            <div class="timeline-title">ELAHABAD COLLEGE, CUMILLA</div>
+                            <div class="timeline-subtitle">HSC | Science</div>
+                            <div class="timeline-description">GPA: 5.00 - Completed Higher Secondary Certificate in Science group with excellent results.</div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="timeline-date">2019</span>
+                            <div class="timeline-title">B MOFIZ UDDIN AHMED PILOT GIRLS HIGH SCHOOL, CUMILLA</div>
+                            <div class="timeline-subtitle">SSC</div>
+                            <div class="timeline-description">GPA: 4.61 - Completed Secondary School Certificate with strong academic performance.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Experience Section -->
+                <section class="section fade-in" id="experience">
+                    <h2>Experience</h2>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-title">Data Entry Operator</div>
+                        <div class="timeline-subtitle">Organization: TBD</div>
+                        <div class="timeline-description">
+                            <p><strong>Project:</strong> Government Education data Collection Project for various school information</p>
+                            <p><strong>Role:</strong> Data entry and verification</p>
+                            <p><strong>Duration:</strong> 6 Months (2022)</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-title">Extra Curricular Activities</div>
+                            <ul class="experience-list">
+                                <li><i class="fas fa-chevron-right"></i>Campus organizing Committee for Freshers 2023</li>
+                                <li><i class="fas fa-chevron-right"></i>Worked as team leader in multiple academic and sport based tournaments</li>
+                                <li><i class="fas fa-chevron-right"></i>Improved all academic in various University events</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-title">University Mini Projects</div>
+                            <ul class="experience-list">
+                                <li><i class="fas fa-chevron-right"></i>Microcontroller and Embedded System Based Multiple Projects</li>
+                                <li><i class="fas fa-chevron-right"></i>Web development</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Nazifa Israt Soya. All rights reserved.</p>
+            <p>Frontend Developer | Computer Science Student | Passionate Learner</p>
+        </div>
+    </footer>
+
+</body>
+</html>
